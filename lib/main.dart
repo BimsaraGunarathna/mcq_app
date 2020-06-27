@@ -28,6 +28,9 @@ import './providers/wishlist.dart';
 import './providers/orders.dart';
 import './providers/auth.dart';
 
+//Themes
+import './theme/theme.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -102,18 +105,11 @@ class _MyAppState extends State<MyApp> {
       child: Consumer<Auth>(
         builder: (context, authData, _) => MaterialApp(
           title: 'Go Now',
+          /*
           theme: ThemeData(
-            // This is the theme of your application.
-            //
-            // Try running your application with "flutter run". You'll see the
-            // application has a blue toolbar. Then, without quitting the app, try
-            // changing the primarySwatch below to Colors.green and then invoke
-            // "hot reload" (press "r" in the console where you ran "flutter run",
-            // or simply save your changes to "hot reload" in a Flutter IDE).
-            // Notice that the counter didn't reset back to zero; the application
-            // is not restarted.
             primarySwatch: Colors.orange,
           ),
+          */
           //home: CreateNewPasswordPage(),
           //home: VehicleItemPage(),
           //home: LoginPage(),
@@ -121,6 +117,8 @@ class _MyAppState extends State<MyApp> {
           //home: SearchPage(),
           //home: HomePage(),
           home: RootPage(),
+          theme: AppTheme.lightTheme,
+          //home: HomePage(),
           //home: BottomNavigationBarController(),
           //home: TestPage(),
           //home: EditVehiclePage(),
@@ -147,7 +145,8 @@ class _MyAppState extends State<MyApp> {
             TripPage.routeName: (ctx) => TripPage(),
             OffersPage.routeName: (ctx) => OffersPage(),
             //Bottom Navigator
-            BottomNavigationBarController.routeName: (ctx) => BottomNavigationBarController(),
+            BottomNavigationBarController.routeName: (ctx) =>
+                BottomNavigationBarController(),
           },
         ),
       ),

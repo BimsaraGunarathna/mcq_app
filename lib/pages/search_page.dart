@@ -4,19 +4,19 @@ import 'package:provider/provider.dart';
 
 //Widgets
 import '../widgets/vehicle_grid.dart';
-import '../widgets//badge.dart.dart';
 import '../widgets/app_drawer.dart';
+import '../widgets/badge.dart.dart';
 
 //Providers
 import '../providers/vehicles.dart';
 import '../providers/auth.dart';
 import '../providers/wishlist.dart';
 
-//Pages
-import './wishlist_page.dart';
-
 //Exceptions
 import '../exceptions/http_exception.dart';
+
+//Pages
+import '../pages/wishlist_page.dart';
 
 //Services
 import '../services/custom_search_delegate.dart';
@@ -59,7 +59,8 @@ class _SearchPageState extends State<SearchPage> {
 
   Future<void> _getIdentityId() async {
     try {
-      String identityId = Provider.of<Auth>(context, listen: false).getIdentityId();
+      String identityId =
+          Provider.of<Auth>(context, listen: false).getIdentityId();
       print('Identity ID @ Search : $identityId');
       Provider.of<Vehicles>(context, listen: false).haveIdentityId(identityId);
       setState(() {
@@ -232,17 +233,7 @@ class _SearchPageState extends State<SearchPage> {
         ],
       ),
       drawer: AppDrawer(),
-      body: RefreshIndicator(
-        displacement: 5.0,
-        onRefresh: _refreshVehicles,
-        child: _isLoading
-            ? Container(
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              )
-            : VehicleGrid(),
-      ),
+      body: VehicleGrid(),
     );
   }
 }

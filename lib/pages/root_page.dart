@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../providers/auth.dart';
 
 //Pages
-import './login_page.dart';
+//import './login_page.dart';
 import '../navigation/bottom-nav-bar-controller.dart';
 
 //websocket
@@ -32,8 +32,8 @@ class _RootPageState extends State<RootPage> {
     testWebsocket();
 
     _initiateSession();
-    
-    super.initState(); 
+
+    super.initState();
   }
   /*
   Future<void> _getCognitoCredential() async {
@@ -49,7 +49,8 @@ class _RootPageState extends State<RootPage> {
 
   Future<void> testWebsocket() async {
     print('WebScoket is called');
-    var channel = IOWebSocketChannel.connect("wss://3bpxptbbj1.execute-api.ap-south-1.amazonaws.com/dev");
+    var channel = IOWebSocketChannel.connect(
+        "wss://3bpxptbbj1.execute-api.ap-south-1.amazonaws.com/dev");
 
     channel.stream.listen((message) {
       print('WebScoket: ' + message);

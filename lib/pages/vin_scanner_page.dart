@@ -102,7 +102,7 @@ class _VINScannerPageState extends State<VINScannerPage> {
                 onSaved: (value) async {
                   //WP0ZZZ99ZTS392124
                   var vin = VIN(number: '$value', extended: true);
-                  
+
                   print('WMI: ${vin.wmi}');
                   print('VDS: ${vin.vds}');
                   print('VIS: ${vin.vis}');
