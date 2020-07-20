@@ -19,19 +19,20 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  bool _sessionRetrieved = false;
+  //bool _sessionRetrieved = false;
 
   @override
   void initState() {
     //_getCognitoCredential();
     //testWebsocket();
+    /*
     setState(() {
       _sessionRetrieved = false;
     });
-
+    */
     //testWebsocket();
 
-    _initiateSession();
+    //_initiateSession();
 
     super.initState();
   }
@@ -68,9 +69,11 @@ class _RootPageState extends State<RootPage> {
     //bool hasSession = await Provider.of<Auth>(context, listen: false).init();
     //print('HAS SESSION IS $hasSession');
     if (hasSession) {
+      /*
       setState(() {
         _sessionRetrieved = true;
       });
+      */
     }
   }
 

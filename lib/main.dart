@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mcq_app/pages/teacher_page.dart';
 import 'package:provider/provider.dart';
 
 //Pages
@@ -20,8 +19,9 @@ import './pages/create_new_password.dart';
 import './pages/host_page.dart';
 import './pages/profile_page.dart';
 import './pages/favourite_page.dart';
-import 'pages/edit_mcq_paper_page.dart';
 import './pages/trip_page.dart';
+import './pages/teacher_page.dart';
+import './pages/paper_edit_page.dart';
 
 //Providers
 import 'providers/mcq_paper_provider.dart';
@@ -145,7 +145,9 @@ class _MyAppState extends State<MyApp> {
             FavouritePage.routeName: (ctx) => FavouritePage(),
             TripPage.routeName: (ctx) => TripPage(),
             TeacherPage.routeName: (ctx) => TeacherPage(),
-            EditMCQPaperPage.routeName: (ctx) => EditMCQPaperPage(),
+            PaperEditPage.routeName: (ctx) => PaperEditPage(),
+            //EditMCQPaperPage.routeName: (ctx) => EditMCQPaperPage(),
+
             //Bottom Navigator
             BottomNavigationBarController.routeName: (ctx) =>
                 BottomNavigationBarController(),

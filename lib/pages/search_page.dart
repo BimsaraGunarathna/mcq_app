@@ -47,12 +47,12 @@ class _SearchPageState extends State<SearchPage> {
     });
 
     //Initiate accquiring Id Token and Identity id.
-    _getIdToken();
-    _getIdentityId();
+    //_getIdToken();
+    //_getIdentityId();
 
     //Get the session.
-    _initiateSession();
-    _requestVehicleData();
+    //_initiateSession();
+    //_requestVehicleData();
 
     super.initState();
   }
@@ -179,7 +179,6 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     final productContainer = Provider.of<Vehicles>(context);
-
     return Scaffold(
       appBar: AppBar(
         title: Text('mcqGuru'),

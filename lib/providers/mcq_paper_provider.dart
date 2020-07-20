@@ -13,25 +13,56 @@ class MCQPaperProvider with ChangeNotifier {
   List<MCQPaper> _mCQPaper = [];
 
   void addDemoPaper() {
-    _mCQPaper.add(MCQPaper(
-        paperId: null,
-        paperHostId: null,
-        subjectId: null,
-        paperName: null,
-        paperGrade: null,
-        paperFocussedExamination: null,
-        paperDescription: null));
+    _mCQPaper.add(
+      MCQPaper(
+          paperId: 'paperId_uiQe76hU123',
+          paperHostId: 'Ricky Gervais',
+          subjectId: 'Combine Mathamatics',
+          paperName: 'Combine Mathamatics 2 : Second Term',
+          paperThumbnailImgURL:
+              'https://homepages.cae.wisc.edu/~ece533/images/baboon.png',
+          paperGrade: 13,
+          paperFocussedExamination: 'A/L',
+          paperMCQList: _mCQItems,
+          paperDescription:
+              'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for will uncover many web sites still in their infancy.'),
+    );
+    _mCQPaper.add(
+      MCQPaper(
+          paperId: 'paperId_u1234FU123',
+          paperHostId: 'JOHNNY DEPP',
+          subjectId: 'Environment',
+          paperName: 'Environment 2 : First Term',
+          paperThumbnailImgURL:
+              'https://homepages.cae.wisc.edu/~ece533/images/monarch.png',
+          paperGrade: 5,
+          paperFocussedExamination: 'Schoolarship',
+          paperDescription:
+              'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for will uncover many web sites still in their infancy.'),
+    );
   }
 
   void addDemoItems() {
     _mCQItems.add(
       MCQ(
-          mCQId: 'Hello World',
+          mCQId: 'mCQId_hUus87681',
           mCQNum: 1,
-          mCQNumAnswer: 1,
-          mCQQueBlock1: 'Hello World',
+          mCQNumAnswer: 3,
+          mCQQueBlock1:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquam bibendum dignissim. Nunc rhoncus metus ac enim hendrerit, sit amet pretium mi pharetra. In hac habitasse platea dictumst. Suspendisse finibus, lectus in condimentum suscipit, felis felis convallis libero, sit amet volutpat nulla dui in sapien.',
           mCQChoice1Block1:
               '(i)	ix>gl uQ,øjHhl TlaislrK wxlh Y+kH jk m%fNao^h &',
+          mCQChoice2Block1: 'Hello World'),
+    );
+    _mCQItems.add(
+      MCQ(
+          mCQId: 'mCQId_hDFQ681',
+          mCQNum: 2,
+          mCQNumAnswer: 2,
+          mCQQueBlock1:
+              'Donec congue dapibus tempus. Nulla egestas risus orci, ac laoreet turpis hendrerit a. In sem leo, faucibus ultrices mauris eu, aliquet fermentum eros.',
+          mCQChoice1Block1:
+              'Donec iaculis dolor sit amet erat ultricies, faucibus accumsan eros tristique. Proin et augue urna.',
           mCQChoice2Block1: 'Hello World'),
     );
   }
@@ -44,6 +75,11 @@ class MCQPaperProvider with ChangeNotifier {
   List<MCQPaper> get getMCQPaper {
     addDemoPaper();
     return [..._mCQPaper];
+  }
+
+  //getter for the single vehicle that matches vehicleId
+  MCQPaper findById(String id) {
+    return _mCQPaper.firstWhere((paper) => paper.paperId == id);
   }
 
   //Authentication Credentials

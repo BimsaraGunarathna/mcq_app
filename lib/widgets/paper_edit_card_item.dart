@@ -3,26 +3,26 @@ import 'package:provider/provider.dart';
 //import 'dart:convert' show utf8;
 
 //Pages
-//import '../pages/vehicle_detail_page.dart';
-//import '../pages/vehicle_description_page.dart';
+import '../pages/paper_edit_page.dart';
+
+//Models
+import '../models/mcq_paper.dart';
 
 //Provider
 import '../providers/mcq_paper_provider.dart';
 
-class MCQEditCardItem extends StatelessWidget {
+class PaperEditCardItem extends StatelessWidget {
   //var encoded = utf8.encode('Lorem ipsum dolor sit amet, consetetur...');
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MCQPaperProvider>(
+    return Consumer<MCQPaper>(
       builder: (context, mcq, child) => GestureDetector(
         onTap: () {
-          /*
           Navigator.of(context).pushNamed(
-            VehicleDetailPage.routeName,
-            arguments: vehicle.vehicleId,
+            PaperEditPage.routeName,
+            arguments: mcq.paperId,
           );
-          */
         },
         child: Card(
           elevation: 10,
@@ -32,7 +32,7 @@ class MCQEditCardItem extends StatelessWidget {
               children: <Widget>[
                 Container(
                   child: Image.network(
-                    'https://cdn.maikoapp.com/3d4b/4quqa/150.jpg',
+                    mcq.paperThumbnailImgURL,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -40,7 +40,7 @@ class MCQEditCardItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      '(i)	ix>gl uQ,øjHhl TlaislrK wxlh Y+kH jk m%fNao^h &',
+                      mcq.paperDescription,
                       style: Theme.of(context).textTheme.bodyText2,
                       textAlign: TextAlign.center,
                     ),

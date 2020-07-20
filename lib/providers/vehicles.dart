@@ -192,7 +192,7 @@ class Vehicles with ChangeNotifier {
 
   //Get all the vehicle from server.
   Future<void> fetchAndSetVehicles() async {
-    print('idToken @ fetchAndSetVehicles: ' + idToken);
+    //print('idToken @ fetchAndSetVehicles: ' + idToken);
     const url =
         'https://ao83dvqxaf.execute-api.ap-south-1.amazonaws.com/dev/vehicles/all';
     try {
@@ -266,7 +266,7 @@ class Vehicles with ChangeNotifier {
       //Store fetched items.
       _hostItems = loadedHostVehicles;
       _items = loadedVehicles;
-      
+
       notifyListeners();
     } on SocketException catch (error) {
       print('SocketException Occurred(1) : $error');
@@ -280,9 +280,8 @@ class Vehicles with ChangeNotifier {
     notifyListeners();
   }
 
-
 //Get the vehicles hosted by owner.
-Future<void> fetchHostedVehicles() async {
+  Future<void> fetchHostedVehicles() async {
     print('idToken @ fetchAndSetVehicles: ' + idToken);
     final url =
         'https://ao83dvqxaf.execute-api.ap-south-1.amazonaws.com/dev/host';

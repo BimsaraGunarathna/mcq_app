@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import './mcq.dart';
 
 //Model for single MCQ.
 class MCQPaper with ChangeNotifier {
@@ -8,8 +9,9 @@ class MCQPaper with ChangeNotifier {
   final String subjectId;
   final String createdAt;
   final String paperName;
+  final String paperThumbnailImgURL;
   final String paperAvgRating;
-  final String paperGrade;
+  final int paperGrade;
   final String paperFocussedExamination;
   final String paperDescription;
   final double paperTimeLimit;
@@ -20,12 +22,14 @@ class MCQPaper with ChangeNotifier {
   final String paperSearchTag4;
   final String paperSearchTag5;
   final String paperSearchTag6;
+  final List<MCQ> paperMCQList;
 
   MCQPaper({
     @required this.paperId,
     @required this.paperHostId,
     @required this.subjectId,
     @required this.paperName,
+    @required this.paperThumbnailImgURL,
     @required this.paperGrade,
     @required this.paperFocussedExamination,
     @required this.paperDescription,
@@ -40,6 +44,7 @@ class MCQPaper with ChangeNotifier {
     this.paperSearchTag4,
     this.paperSearchTag5,
     this.paperSearchTag6,
+    this.paperMCQList,
   });
   /*
   void toggleFavouriteStatus() {

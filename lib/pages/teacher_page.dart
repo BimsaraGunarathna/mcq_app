@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 //Widgets
-import '../widgets/app_drawer.dart';
+//import '../widgets/app_drawer.dart';
 
 //Providers
 import '../providers/mcq_paper_provider.dart';
 
 //Pages
-import 'edit_mcq_paper_page.dart';
 
 //Models
 import '../models/mcq_paper.dart';
 
 //Widget
-import '../widgets/mcq_edit_card_item.dart';
+import '../widgets/paper_edit_card_item.dart';
 
 class TeacherPage extends StatefulWidget {
   static const routeName = '/teacher-page';
@@ -26,28 +25,38 @@ class TeacherPage extends StatefulWidget {
 
 class _TeacherPageState extends State<TeacherPage> {
   //
-  bool _isLoading = true;
+  bool _isLoading = false;
   List<MCQPaper> teacherPapers = [];
 
   @override
   void initState() {
-    setState(() {
-      _isLoading = false;
+    //initiate loading indicator.
+    this.setState(() {
+      _isLoading = true;
     });
-    _getTeacherPaper();
+    super.initState();
   }
 
-  Future _refresh() {
+  @override
+  void didChangeDependencies() {
     _getTeacherPaper();
+    super.didChangeDependencies();
+  }
 
+  Future<void> _refresh() async {
+    _getTeacherPaper();
     this.setState(() {
       _isLoading = false;
     });
+    //Await 3 seconds.
+    await new Future.delayed(new Duration(seconds: 3));
   }
 
   Future<void> _getTeacherPaper() async {
+    teacherPapers = [];
     final mCQPaperData = Provider.of<MCQPaperProvider>(context);
     teacherPapers = mCQPaperData.getMCQPaper;
+    print('_getTeacherPaper is WORKING' + teacherPapers.toString());
     setState(() {
       _isLoading = false;
     });
@@ -56,7 +65,6 @@ class _TeacherPageState extends State<TeacherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: AppDrawer(),
       appBar: AppBar(
         title: const Text('Teacher'),
         actions: <Widget>[
@@ -64,25 +72,27 @@ class _TeacherPageState extends State<TeacherPage> {
             icon: Icon(Icons.add, color: Colors.white),
             onPressed: () {
               //do something.
-              Navigator.of(context).pushNamed(EditMCQPaperPage.routeName);
+              //Navigator.of(context).pushNamed(EditMCQPaperPage.routeName);
             },
           ),
         ],
       ),
-      body: RefreshIndicator(
-        onRefresh: _refresh,
-        child: ListView.builder(
-          padding: const EdgeInsets.all(0.5),
-          itemCount: teacherPapers.length,
-          itemBuilder: (context, index) => ChangeNotifierProvider.value(
-            //See 15 of State Management
-            //value is better than builder for lists which rebuild after the intial build.
-            value: teacherPapers[index],
-            //builder: (ctx) => vehicles[index],
-            child: MCQEditCardItem(),
-          ),
-        ),
-      ),
+      body: _isLoading
+          ? CircularProgressIndicator()
+          : RefreshIndicator(
+              onRefresh: _refresh,
+              child: ListView.builder(
+                padding: const EdgeInsets.all(0.5),
+                itemCount: teacherPapers.length,
+                itemBuilder: (context, index) => ChangeNotifierProvider.value(
+                  //See 15 of State Management
+                  //value is better than builder for lists which rebuild after the intial build.
+                  value: teacherPapers[index],
+                  //builder: (ctx) => vehicles[index],
+                  child: PaperEditCardItem(),
+                ),
+              ),
+            ),
     );
   }
 }
