@@ -9,8 +9,8 @@ import '../providers/auth.dart';
 import '../navigation/bottom-nav-bar-controller.dart';
 
 //websocket
-import 'package:web_socket_channel/io.dart';
-import 'package:web_socket_channel/status.dart' as status;
+//import 'package:web_socket_channel/io.dart';
+//import 'package:web_socket_channel/status.dart' as status;
 
 class RootPage extends StatefulWidget {
   static const routeName = '/root-page';
@@ -24,12 +24,12 @@ class _RootPageState extends State<RootPage> {
   @override
   void initState() {
     //_getCognitoCredential();
-    testWebsocket();
+    //testWebsocket();
     setState(() {
       _sessionRetrieved = false;
     });
 
-    testWebsocket();
+    //testWebsocket();
 
     _initiateSession();
 
@@ -47,17 +47,17 @@ class _RootPageState extends State<RootPage> {
   }
   */
 
-  Future<void> testWebsocket() async {
-    print('WebScoket is called');
-    var channel = IOWebSocketChannel.connect(
-        "wss://3bpxptbbj1.execute-api.ap-south-1.amazonaws.com/dev");
-
-    channel.stream.listen((message) {
-      print('WebScoket: ' + message);
-      channel.sink.add("received!");
-      channel.sink.close(status.goingAway);
-    });
-  }
+  //Future<void> testWebsocket() async {
+  //  print('WebScoket is called');
+  //  var channel = IOWebSocketChannel.connect(
+  //      "wss://3bpxptbbj1.execute-api.ap-south-1.amazonaws.com/dev");
+//
+  //  channel.stream.listen((message) {
+  //    print('WebScoket: ' + message);
+  //    channel.sink.add("received!");
+  //    channel.sink.close(status.goingAway);
+  //  });
+  //}
 
   Future<void> _initiateSession() async {
     Auth auth = Provider.of<Auth>(context, listen: false);

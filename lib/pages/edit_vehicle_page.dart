@@ -122,7 +122,6 @@ class _EditVehicleStatePage extends State<EditVehiclePage> {
           source: ImageSource.camera,
           imageQuality: 85,
         );
-
         print('IMAGE picker path is: ');
         print(_image.path);
         //compressImage(_image.path);

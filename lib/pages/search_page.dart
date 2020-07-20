@@ -5,18 +5,18 @@ import 'package:provider/provider.dart';
 //Widgets
 import '../widgets/vehicle_grid.dart';
 import '../widgets/app_drawer.dart';
-import '../widgets/badge.dart.dart';
+//import '../widgets/badge.dart.dart';
 
 //Providers
 import '../providers/vehicles.dart';
 import '../providers/auth.dart';
-import '../providers/wishlist.dart';
+//import '../providers/wishlist.dart';
 
 //Exceptions
 import '../exceptions/http_exception.dart';
 
 //Pages
-import '../pages/wishlist_page.dart';
+//import '../pages/wishlist_page.dart';
 
 //Services
 import '../services/custom_search_delegate.dart';
@@ -182,7 +182,7 @@ class _SearchPageState extends State<SearchPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vehicles Demo'),
+        title: Text('mcqGuru'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
@@ -192,43 +192,6 @@ class _SearchPageState extends State<SearchPage> {
                 delegate: CustomSearchDelegate(),
               );
             },
-          ),
-          PopupMenuButton(
-            onSelected: (FilterOptions selectedValue) {
-              if (selectedValue == FilterOptions.Favourites) {
-                productContainer.showFavouriteOnly();
-              } else {
-                productContainer.showAll();
-              }
-            },
-            icon: Icon(
-              Icons.more_vert,
-            ),
-            itemBuilder: (_) => [
-              PopupMenuItem(
-                child: Text('Only Favourite'),
-                value: FilterOptions.Favourites,
-              ),
-              PopupMenuItem(
-                child: Text('Show all'),
-                value: FilterOptions.All,
-              ),
-            ],
-          ),
-          Consumer<Wishlist>(
-            builder: (_, wishlist, ch) => Badge(
-              child: ch,
-              value: wishlist.itemCount.toString(),
-            ),
-            child: IconButton(
-              icon: Icon(
-                Icons.shopping_cart,
-                color: Colors.white30,
-              ),
-              onPressed: () {
-                Navigator.of(context).pushNamed(WishlistPage.routeName);
-              },
-            ),
           )
         ],
       ),

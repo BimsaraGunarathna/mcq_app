@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 //Page
-import '../pages/user_vehicle_host_page.dart';
+//import '../pages/user_vehicle_host_page.dart';
 import '../pages/search_page.dart';
 import '../pages/profile_page.dart';
-import '../pages/offers_page.dart';
+import '../pages/teacher_page.dart';
 import '../pages/trip_page.dart';
 
 //icons
@@ -26,11 +26,8 @@ class _BottomNavigationBarControllerState
     TripPage(
       key: PageStorageKey('Page2'),
     ),
-    OffersPage(
+    TeacherPage(
       key: PageStorageKey('Page3'),
-    ),
-    UserVehicleHostPage(
-      key: PageStorageKey('Page4'),
     ),
     ProfilePage(
       key: PageStorageKey('Page5'),
@@ -51,15 +48,11 @@ class _BottomNavigationBarControllerState
           ),
           BottomNavigationBarItem(
             icon: Icon(MaterialIcons.directions_bike),
-            title: Text('Trip'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Feather.message_square),
-            title: Text('Messages'),
+            title: Text('Leaderboard'),
           ),
           BottomNavigationBarItem(
             icon: Icon(AntDesign.car),
-            title: Text('Host'),
+            title: Text('Teacher'),
           ),
           BottomNavigationBarItem(
             icon: Icon(AntDesign.user),

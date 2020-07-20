@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mcq_app/pages/teacher_page.dart';
 import 'package:provider/provider.dart';
 
 //Pages
@@ -19,17 +20,15 @@ import './pages/create_new_password.dart';
 import './pages/host_page.dart';
 import './pages/profile_page.dart';
 import './pages/favourite_page.dart';
-import './pages/offers_page.dart';
+import 'pages/edit_mcq_paper_page.dart';
 import './pages/trip_page.dart';
 
 //Providers
+import 'providers/mcq_paper_provider.dart';
 import './providers/vehicles.dart';
 import './providers/wishlist.dart';
 import './providers/orders.dart';
 import './providers/auth.dart';
-
-//Themes
-import './theme/theme.dart';
 
 void main() => runApp(MyApp());
 
@@ -98,30 +97,32 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider.value(
           value: Wishlist(),
         ),
+        ChangeNotifierProvider.value(
+          value: MCQPaperProvider(),
+        ),
       ],
       //ChangeNotifierProvider.value(
       //value: Vehicles(),
       //builder: (ctx) => Vehicles(),
       child: Consumer<Auth>(
         builder: (context, authData, _) => MaterialApp(
-          title: 'Go Now',
+          title: 'mcq guru',
           /*
           theme: ThemeData(
             primarySwatch: Colors.orange,
           ),
           */
-          //home: CreateNewPasswordPage(),
-          //home: VehicleItemPage(),
-          //home: LoginPage(),
-          //home: VINScannerPage(),
-          //home: SearchPage(),
-          //home: HomePage(),
           home: RootPage(),
-          theme: AppTheme.lightTheme,
-          //home: HomePage(),
-          //home: BottomNavigationBarController(),
-          //home: TestPage(),
-          //home: EditVehiclePage(),
+          //theme: AppTheme.lightTheme,
+          theme: ThemeData(
+            // Define the default font family.
+            textTheme: TextTheme(
+              headline1: TextStyle(),
+              headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+              bodyText1: TextStyle(fontFamily: 'defualt'),
+              bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'fm'),
+            ),
+          ),
           //navigatorKey: locator<NavigationService>().navigatorKey,
 
           routes: {
@@ -143,7 +144,8 @@ class _MyAppState extends State<MyApp> {
             ProfilePage.routeName: (ctx) => ProfilePage(),
             FavouritePage.routeName: (ctx) => FavouritePage(),
             TripPage.routeName: (ctx) => TripPage(),
-            OffersPage.routeName: (ctx) => OffersPage(),
+            TeacherPage.routeName: (ctx) => TeacherPage(),
+            EditMCQPaperPage.routeName: (ctx) => EditMCQPaperPage(),
             //Bottom Navigator
             BottomNavigationBarController.routeName: (ctx) =>
                 BottomNavigationBarController(),
